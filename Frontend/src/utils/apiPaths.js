@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:1112';
+export const API_BASE_URL = 'https://maowpao.onrender.com';
 
 export const API_PATHS = {
   AUTH: {

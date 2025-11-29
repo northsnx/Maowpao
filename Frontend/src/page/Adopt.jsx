@@ -324,7 +324,7 @@ const Adopt = () => {
                         onClick={() => requestAdoption(cat._id)}
                         disabled={adoptionStatus[cat._id] && adoptionStatus[cat._id] !== "available"}
                         className={`w-full py-3 rounded-full font-bold transition-all 
-    ${adoptionStatus[cat._id] === "available" || !adoptionStatus[cat._id]
+                          ${adoptionStatus[cat._id] === "available" || !adoptionStatus[cat._id]
                             ? "bg-green-600 text-white hover:shadow-lg hover:scale-105"
                             : "bg-gray-400 text-gray-200 cursor-not-allowed"
                           }`}
@@ -337,6 +337,7 @@ const Adopt = () => {
                           return "อุปการะเลย";
                         })()}
                       </button>
+
 
 
                     </div>
@@ -425,9 +426,24 @@ const Adopt = () => {
                   </div>
 
                   <div className="pt-6 border-t border-gray-200">
-                    <button className="w-full py-4 bg-gradient-to-r from-green-800 to-green-600 text-white rounded-full text-lg font-black hover:shadow-xl hover:scale-105 transition-all">
-                      ยื่นคำขอรับเลี้ยง
+                    <button
+                      onClick={() => requestAdoption(selectedCat._id)}
+                      disabled={adoptionStatus[selectedCat._id] && adoptionStatus[selectedCat._id] !== "available"}
+                      className={`w-full py-4 rounded-full text-lg font-black transition-all
+                        ${adoptionStatus[selectedCat._id] === "available" || !adoptionStatus[selectedCat._id]
+                          ? "bg-gradient-to-r from-green-800 to-green-600 text-white hover:shadow-xl hover:scale-105"
+                          : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                        }`}
+                    >
+                      {(() => {
+                        const status = adoptionStatus[selectedCat._id];
+                        if (status === "pending") return "รออนุมัติ";
+                        if (status === "approved") return "อุปการะสำเร็จ";
+                        if (status === "rejected") return "ถูกปฏิเสธ";
+                        return "ยื่นคำขอรับเลี้ยง";
+                      })()}
                     </button>
+
                     <p className="text-center text-sm text-gray-500 mt-4">
                       เราจะติดต่อกลับภายใน 24 ชั่วโมง
                     </p>
