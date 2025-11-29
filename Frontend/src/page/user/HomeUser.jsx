@@ -48,7 +48,7 @@ const UserProfile = () => {
         );
 
         const mapped = response.data.map(cat => ({
-          id: cat.id,
+          id: cat._id,
           name: cat.name,
           img: cat.images?.[0] || "https://placehold.co/400x400?text=No+Image",
           location: "ไม่ระบุ",
@@ -321,8 +321,8 @@ const UserProfile = () => {
       // map ข้อมูลให้ง่ายต่อ UI
       const mapped = response.data.map(item => ({
         id: item._id,
-        catName: item.cat.name,
-        adopter: item.adopter.username,
+        catName: item.cat?.name || "Unknown Cat",   // ใช้ optional chaining + fallback
+        adopter: item.adopter?.username || "Unknown",
         status: item.status,
         message: item.message,
         datetime: item.createdAt
