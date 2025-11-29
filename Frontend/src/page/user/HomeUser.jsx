@@ -48,7 +48,7 @@ const UserProfile = () => {
         );
 
         const mapped = response.data.map(cat => ({
-          id: cat._id,
+          id: cat.id,
           name: cat.name,
           img: cat.images?.[0] || "https://placehold.co/400x400?text=No+Image",
           location: "ไม่ระบุ",
