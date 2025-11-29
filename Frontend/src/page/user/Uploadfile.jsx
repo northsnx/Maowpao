@@ -16,7 +16,7 @@ const UploadFile = ({ form, setForm }) => {
         try {
           const token = localStorage.getItem("accessToken");
           const res = await axios.post(
-            "http://localhost:1112/api/v1/images/upload",
+            "https://maowpao.onrender.com/api/v1/images/upload",
             { images: [reader.result] },
             {
               headers: {
